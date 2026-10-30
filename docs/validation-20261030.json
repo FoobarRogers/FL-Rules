@@ -1,0 +1,22 @@
+{
+  "rules": {
+    "providers_modified_or_added": 20,
+    "service_additions": 118,
+    "cn_rules": 16,
+    "overseas_rules": 8,
+    "upstream_rules_preserved": true,
+    "meta_mihoyo_coverage_preserved": true,
+    "new_steam_cdn_rules": 0,
+    "new_cloud_regex_rules": 0
+  },
+  "scripts": {
+    "checks": 58,
+    "scenarios": 3,
+    "matching_outputs": true,
+    "real_credentials_used": false
+  },
+  "limits": [
+    "未在用户本机实测连接和客户端覆写顺序",
+    "未执行 mihomo 内核配置加载；已解析 YAML 并运行 JS 配置生成验证"
+  ]
+}

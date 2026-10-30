@@ -8,3 +8,7 @@ payload:
   - DOMAIN,f1prodlive.akamaized.net
   - DOMAIN-SUFFIX,formula1.com
   - DOMAIN,mobile-collector.newrelic.com
+
+  # FL-Rules additions: MetaCubeX review, 2026-10-30
+  # F1 TV / Formula 1
+  - DOMAIN-SUFFIX,f1tv.com

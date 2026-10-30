@@ -7,3 +7,9 @@ payload:
   - DOMAIN-SUFFIX,nflximg.net
   - DOMAIN-SUFFIX,nflxso.net
   - DOMAIN-SUFFIX,nflxvideo.net
+
+  # FL-Rules additions: MetaCubeX review, 2026-10-30
+  # Netflix；承载方 Akamai
+  - DOMAIN-SUFFIX,netflix.com.edgesuite.net
+  # Netflix
+  - DOMAIN-SUFFIX,nflxsearch.net

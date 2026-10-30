@@ -3,3 +3,7 @@ payload:
   - DOMAIN-SUFFIX,kfs.io
   - DOMAIN-SUFFIX,kkbox.com
   - DOMAIN-SUFFIX,kkbox.com.tw
+
+  # FL-Rules additions: MetaCubeX review, 2026-10-30
+  # KKBOX / KKTV 共用流媒体域名（两者均为 Asian TV）
+  - DOMAIN-SUFFIX,kk.stream

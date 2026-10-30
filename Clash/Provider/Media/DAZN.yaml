@@ -13,3 +13,11 @@ payload:
   - DOMAIN-SUFFIX,indaznlab.com
   - PROCESS-NAME,com.dazn
   # - USER-AGENT,DAZN*
+
+  # FL-Rules additions: MetaCubeX review, 2026-10-30
+  # DAZN
+  - DOMAIN-SUFFIX,daznfeeds.com
+  # DAZN
+  - DOMAIN-SUFFIX,daznplayer.com
+  # DAZN
+  - DOMAIN-SUFFIX,daznservices.com

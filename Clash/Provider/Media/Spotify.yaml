@@ -27,3 +27,7 @@ payload:
   - DOMAIN-SUFFIX,spotilocal.com
   - DOMAIN-SUFFIX,tospotify.com
   - PROCESS-NAME,com.spotify.music
+
+  # FL-Rules additions: MetaCubeX review, 2026-10-30
+  # Spotify；承载方 Akamai
+  - DOMAIN-SUFFIX,spotify.com.edgesuite.net

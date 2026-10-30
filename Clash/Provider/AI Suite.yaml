@@ -327,3 +327,125 @@ payload:
   - DOMAIN-SUFFIX,grokipedia.com
   - DOMAIN-SUFFIX,grokusercontent.com
   - DOMAIN-SUFFIX,x.ai
+
+  # FL-Rules additions: MetaCubeX review, 2026-10-30
+  # OpenAI 资源（Azure Blob 承载）
+  - DOMAIN,openaiassets.blob.core.windows.net
+  # Perplexity 文件上传（Amazon S3 承载）
+  - DOMAIN,ppl-ai-file-upload.s3.amazonaws.com
+  # Perplexity 资源（Cloudinary 承载）
+  - DOMAIN,pplx-res.cloudinary.com
+  # Agent Client Protocol（ACP 协议项目）
+  - DOMAIN-SUFFIX,agentclientprotocol.com
+  # AnythingLLM
+  - DOMAIN-SUFFIX,anythingllm.com
+  # Arena / LMArena
+  - DOMAIN-SUFFIX,arena.ai
+  # Artificial Analysis（AI 评测）
+  - DOMAIN-SUFFIX,artificialanalysis.ai
+  # ChatGPT 实时功能（LiveKit 承载，社区归类）
+  - DOMAIN,chatgpt.livekit.cloud
+  # Chutes（推理服务）
+  - DOMAIN-SUFFIX,chutes.ai
+  # ClawHub（仅社区收录，运营主体未独立核验）
+  - DOMAIN-SUFFIX,clawhub.ai
+  # Cline
+  - DOMAIN-SUFFIX,cline.bot
+  # CodeRabbit
+  - DOMAIN-SUFFIX,coderabbit.ai
+  # CodeRabbit 的 VS Marketplace 资源（Azure 承载）
+  - DOMAIN,coderabbit.gallery.vsassets.io
+  # Comfy / ComfyUI
+  - DOMAIN-SUFFIX,comfy.org
+  # Comfy 项目构建服务（社区归类）
+  - DOMAIN-SUFFIX,comfyci.org
+  # Comfy Registry
+  - DOMAIN-SUFFIX,comfyregistry.org
+  # CommandCode
+  - DOMAIN-SUFFIX,commandcode.ai
+  # Context7 / Upstash
+  - DOMAIN-SUFFIX,context7.com
+  # CrewAI
+  - DOMAIN-SUFFIX,crewai.com
+  # DeepWiki
+  - DOMAIN-SUFFIX,deepwiki.com
+  # DeepWiki（社区归类）
+  - DOMAIN-SUFFIX,deepwiki.org
+  # Devin / Cognition
+  - DOMAIN-SUFFIX,devin.ai
+  # DreamGen
+  - DOMAIN-SUFFIX,dreamgen.com
+  # Duck.ai / DuckDuckGo
+  - DOMAIN-SUFFIX,duck.ai
+  # ElevenLabs
+  - DOMAIN-SUFFIX,elevenlabs.com
+  # ElevenLabs
+  - DOMAIN-SUFFIX,elevenlabs.io
+  # Grazie / JetBrains
+  - DOMAIN-SUFFIX,grazie.ai
+  # Grazie / JetBrains（AWS 承载）
+  - DOMAIN-SUFFIX,grazie.aws.intellij.net
+  # H2O.ai
+  - DOMAIN-SUFFIX,h2o.ai
+  # Hugging Face
+  - DOMAIN-SUFFIX,hf.co
+  # Hugging Face Spaces
+  - DOMAIN-SUFFIX,hf.space
+  # Hugging Face
+  - DOMAIN-SUFFIX,huggingface.co
+  # LangChain
+  - DOMAIN-SUFFIX,langchain.com
+  # LM Studio
+  - DOMAIN-SUFFIX,lmstudio.ai
+  # Lovart
+  - DOMAIN-SUFFIX,lovart.ai
+  # Magnific
+  - DOMAIN-SUFFIX,magnific.com
+  # Manus
+  - DOMAIN-SUFFIX,manus.im
+  # Manus 的 CDN
+  - DOMAIN-SUFFIX,manuscdn.com
+  # Midjourney
+  - DOMAIN-SUFFIX,midjourney.com
+  # MiniMax 海外服务
+  - DOMAIN-SUFFIX,minimax.io
+  # Mozilla.ai
+  - DOMAIN-SUFFIX,mozilla.ai
+  # NoteGPT
+  - DOMAIN-SUFFIX,notegpt.io
+  # Nous Research
+  - DOMAIN-SUFFIX,nousresearch.com
+  # NovelAI
+  - DOMAIN-SUFFIX,novelai.net
+  # Ollama
+  - DOMAIN-SUFFIX,ollama.com
+  # OpenClaw
+  - DOMAIN-SUFFIX,openclaw.ai
+  # OpenCode
+  - DOMAIN-SUFFIX,opencode.ai
+  # OpenSpec
+  - DOMAIN-SUFFIX,openspec.dev
+  # Perplexity
+  - DOMAIN-SUFFIX,perplexity.com
+  # Plannotator
+  - DOMAIN-SUFFIX,plannotator.ai
+  # Poe / Quora
+  - DOMAIN-SUFFIX,poe.com
+  # Poe 的 CDN
+  - DOMAIN-SUFFIX,poecdn.net
+  # Qoder
+  - DOMAIN-SUFFIX,qoder.com
+  # Sider
+  - DOMAIN-SUFFIX,sider.ai
+  # TapNow
+  - DOMAIN-SUFFIX,tapnow.ai
+  # Tripo
+  - DOMAIN-SUFFIX,tripo3d.ai
+  # Windsurf 的构建/下载服务（社区归类）
+  - DOMAIN-SUFFIX,windsurf.build
+  # YouMind
+  - DOMAIN-SUFFIX,youmind.ai
+  # YouMind
+  - DOMAIN-SUFFIX,youmind.com
+  # YouMind
+  - DOMAIN-SUFFIX,youmind.site

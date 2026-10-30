@@ -1,0 +1,449 @@
+# FL-Rules routing fragment; not a complete subscription.
+# Define mihoyo and hoyoverse groups before use.
+rules:
+- RULE-SET,AdBlock,AdBlock
+- RULE-SET,Special,DIRECT
+- RULE-SET,Netflix,Netflix
+- RULE-SET,Disney Plus,Disney Plus
+- RULE-SET,YouTube,YouTube
+- RULE-SET,Max,Max
+- RULE-SET,Spotify,Spotify
+- RULE-SET,Abema TV,Asian TV
+- RULE-SET,Bahamut,Asian TV
+- RULE-SET,DMM,Asian TV
+- RULE-SET,Fox+,Asian TV
+- RULE-SET,Hulu Japan,Asian TV
+- RULE-SET,IQ,Asian TV
+- RULE-SET,Japonx,Asian TV
+- RULE-SET,JOOX,Asian TV
+- RULE-SET,KKBOX,Asian TV
+- RULE-SET,KKTV,Asian TV
+- RULE-SET,Line TV,Asian TV
+- RULE-SET,myTV SUPER,Asian TV
+- RULE-SET,Niconico,Asian TV
+- RULE-SET,ViuTV,Asian TV
+- RULE-SET,ABC,Global TV
+- RULE-SET,Amazon,Global TV
+- RULE-SET,BBC iPlayer,Global TV
+- RULE-SET,DAZN,Global TV
+- RULE-SET,Discovery Plus,Global TV
+- RULE-SET,encoreTVB,Global TV
+- RULE-SET,F1 TV,Global TV
+- RULE-SET,Fox Now,Global TV
+- RULE-SET,Hulu,Global TV
+- RULE-SET,Pandora,Global TV
+- RULE-SET,PBS,Global TV
+- RULE-SET,Pornhub,Global TV
+- RULE-SET,Soundcloud,Global TV
+- RULE-SET,Bilibili,CN Mainland TV
+- RULE-SET,IQIYI,CN Mainland TV
+- RULE-SET,Letv,CN Mainland TV
+- RULE-SET,Netease Music,CN Mainland TV
+- RULE-SET,Tencent Video,CN Mainland TV
+- RULE-SET,WeTV,CN Mainland TV
+- RULE-SET,Youku,CN Mainland TV
+- RULE-SET,Telegram,Telegram
+- RULE-SET,Crypto,Crypto
+- RULE-SET,Discord,Discord
+- RULE-SET,Google FCM,Google FCM
+- RULE-SET,AI Suite,AI Suite
+- RULE-SET,Microsoft,Microsoft
+- RULE-SET,PayPal,PayPal
+- RULE-SET,Scholar,Scholar
+- RULE-SET,Speedtest,Speedtest
+- RULE-SET,Steam,Steam
+- RULE-SET,TikTok,TikTok
+- RULE-SET,Apple Music,Apple TV
+- RULE-SET,Apple News,Apple TV
+- RULE-SET,Apple TV,Apple TV
+- RULE-SET,Apple Push,Apple Push
+- RULE-SET,Apple,Apple Services
+- RULE-SET,HoYoverse,hoyoverse
+- RULE-SET,miHoYoCN,mihoyo
+- RULE-SET,PROXY,Proxy
+- RULE-SET,Domestic,Domestic
+- RULE-SET,Domestic IPs,Domestic
+- RULE-SET,LAN,DIRECT
+- GEOIP,CN,Domestic
+- MATCH,Others
+rule-providers:
+  AdBlock:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/AdBlock.yaml
+    path: ./Rules/FL-Rules/AdBlock.yaml
+    interval: 86400
+  Special:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Special.yaml
+    path: ./Rules/FL-Rules/Special.yaml
+    interval: 86400
+  PROXY:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Proxy.yaml
+    path: ./Rules/FL-Rules/Proxy.yaml
+    interval: 86400
+  Domestic:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Domestic.yaml
+    path: ./Rules/FL-Rules/Domestic.yaml
+    interval: 86400
+  Domestic IPs:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Domestic%20IPs.yaml
+    path: ./Rules/FL-Rules/Domestic%20IPs.yaml
+    interval: 86400
+  LAN:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/LAN.yaml
+    path: ./Rules/FL-Rules/LAN.yaml
+    interval: 86400
+  Netflix:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Netflix.yaml
+    path: ./Rules/FL-Rules/Media/Netflix.yaml
+    interval: 86400
+  Spotify:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Spotify.yaml
+    path: ./Rules/FL-Rules/Media/Spotify.yaml
+    interval: 86400
+  YouTube:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/YouTube.yaml
+    path: ./Rules/FL-Rules/Media/YouTube.yaml
+    interval: 86400
+  Max:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Max.yaml
+    path: ./Rules/FL-Rules/Media/Max.yaml
+    interval: 86400
+  Bilibili:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Bilibili.yaml
+    path: ./Rules/FL-Rules/Media/Bilibili.yaml
+    interval: 86400
+  IQ:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/IQ.yaml
+    path: ./Rules/FL-Rules/Media/IQ.yaml
+    interval: 86400
+  IQIYI:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/IQIYI.yaml
+    path: ./Rules/FL-Rules/Media/IQIYI.yaml
+    interval: 86400
+  Letv:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Letv.yaml
+    path: ./Rules/FL-Rules/Media/Letv.yaml
+    interval: 86400
+  Netease Music:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Netease%20Music.yaml
+    path: ./Rules/FL-Rules/Media/Netease%20Music.yaml
+    interval: 86400
+  Tencent Video:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Tencent%20Video.yaml
+    path: ./Rules/FL-Rules/Media/Tencent%20Video.yaml
+    interval: 86400
+  Youku:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Youku.yaml
+    path: ./Rules/FL-Rules/Media/Youku.yaml
+    interval: 86400
+  WeTV:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/WeTV.yaml
+    path: ./Rules/FL-Rules/Media/WeTV.yaml
+    interval: 86400
+  ABC:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/ABC.yaml
+    path: ./Rules/FL-Rules/Media/ABC.yaml
+    interval: 86400
+  Abema TV:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Abema%20TV.yaml
+    path: ./Rules/FL-Rules/Media/Abema%20TV.yaml
+    interval: 86400
+  Amazon:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Amazon.yaml
+    path: ./Rules/FL-Rules/Media/Amazon.yaml
+    interval: 86400
+  Apple Music:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Apple%20Music.yaml
+    path: ./Rules/FL-Rules/Media/Apple%20Music.yaml
+    interval: 86400
+  Apple News:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Apple%20News.yaml
+    path: ./Rules/FL-Rules/Media/Apple%20News.yaml
+    interval: 86400
+  Apple TV:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Apple%20TV.yaml
+    path: ./Rules/FL-Rules/Media/Apple%20TV.yaml
+    interval: 86400
+  Bahamut:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Bahamut.yaml
+    path: ./Rules/FL-Rules/Media/Bahamut.yaml
+    interval: 86400
+  BBC iPlayer:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/BBC%20iPlayer.yaml
+    path: ./Rules/FL-Rules/Media/BBC%20iPlayer.yaml
+    interval: 86400
+  DAZN:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/DAZN.yaml
+    path: ./Rules/FL-Rules/Media/DAZN.yaml
+    interval: 86400
+  Discovery Plus:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Discovery%20Plus.yaml
+    path: ./Rules/FL-Rules/Media/Discovery%20Plus.yaml
+    interval: 86400
+  Disney Plus:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Disney%20Plus.yaml
+    path: ./Rules/FL-Rules/Media/Disney%20Plus.yaml
+    interval: 86400
+  DMM:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/DMM.yaml
+    path: ./Rules/FL-Rules/Media/DMM.yaml
+    interval: 86400
+  encoreTVB:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/encoreTVB.yaml
+    path: ./Rules/FL-Rules/Media/encoreTVB.yaml
+    interval: 86400
+  F1 TV:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/F1%20TV.yaml
+    path: ./Rules/FL-Rules/Media/F1%20TV.yaml
+    interval: 86400
+  Fox Now:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Fox%20Now.yaml
+    path: ./Rules/FL-Rules/Media/Fox%20Now.yaml
+    interval: 86400
+  Fox+:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Fox%2B.yaml
+    path: ./Rules/FL-Rules/Media/Fox%2B.yaml
+    interval: 86400
+  Hulu Japan:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Hulu%20Japan.yaml
+    path: ./Rules/FL-Rules/Media/Hulu%20Japan.yaml
+    interval: 86400
+  Hulu:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Hulu.yaml
+    path: ./Rules/FL-Rules/Media/Hulu.yaml
+    interval: 86400
+  Japonx:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Japonx.yaml
+    path: ./Rules/FL-Rules/Media/Japonx.yaml
+    interval: 86400
+  JOOX:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/JOOX.yaml
+    path: ./Rules/FL-Rules/Media/JOOX.yaml
+    interval: 86400
+  KKBOX:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/KKBOX.yaml
+    path: ./Rules/FL-Rules/Media/KKBOX.yaml
+    interval: 86400
+  KKTV:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/KKTV.yaml
+    path: ./Rules/FL-Rules/Media/KKTV.yaml
+    interval: 86400
+  Line TV:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Line%20TV.yaml
+    path: ./Rules/FL-Rules/Media/Line%20TV.yaml
+    interval: 86400
+  myTV SUPER:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/myTV%20SUPER.yaml
+    path: ./Rules/FL-Rules/Media/myTV%20SUPER.yaml
+    interval: 86400
+  Niconico:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Niconico.yaml
+    path: ./Rules/FL-Rules/Media/Niconico.yaml
+    interval: 86400
+  Pandora:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Pandora.yaml
+    path: ./Rules/FL-Rules/Media/Pandora.yaml
+    interval: 86400
+  PBS:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/PBS.yaml
+    path: ./Rules/FL-Rules/Media/PBS.yaml
+    interval: 86400
+  Pornhub:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Pornhub.yaml
+    path: ./Rules/FL-Rules/Media/Pornhub.yaml
+    interval: 86400
+  Soundcloud:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Soundcloud.yaml
+    path: ./Rules/FL-Rules/Media/Soundcloud.yaml
+    interval: 86400
+  ViuTV:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/ViuTV.yaml
+    path: ./Rules/FL-Rules/Media/ViuTV.yaml
+    interval: 86400
+  Telegram:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Telegram.yaml
+    path: ./Rules/FL-Rules/Telegram.yaml
+    interval: 86400
+  Crypto:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Crypto.yaml
+    path: ./Rules/FL-Rules/Crypto.yaml
+    interval: 86400
+  Discord:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Discord.yaml
+    path: ./Rules/FL-Rules/Discord.yaml
+    interval: 86400
+  Steam:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Steam.yaml
+    path: ./Rules/FL-Rules/Steam.yaml
+    interval: 86400
+  TikTok:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/TikTok.yaml
+    path: ./Rules/FL-Rules/TikTok.yaml
+    interval: 86400
+  Speedtest:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Speedtest.yaml
+    path: ./Rules/FL-Rules/Speedtest.yaml
+    interval: 86400
+  PayPal:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/PayPal.yaml
+    path: ./Rules/FL-Rules/PayPal.yaml
+    interval: 86400
+  Microsoft:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Microsoft.yaml
+    path: ./Rules/FL-Rules/Microsoft.yaml
+    interval: 86400
+  AI Suite:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/AI%20Suite.yaml
+    path: ./Rules/FL-Rules/AI%20Suite.yaml
+    interval: 86400
+  Apple:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Apple.yaml
+    path: ./Rules/FL-Rules/Apple.yaml
+    interval: 86400
+  Apple Push:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Apple%20Push.yaml
+    path: ./Rules/FL-Rules/Apple%20Push.yaml
+    interval: 86400
+  Google FCM:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Google%20FCM.yaml
+    path: ./Rules/FL-Rules/Google%20FCM.yaml
+    interval: 86400
+  Scholar:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Scholar.yaml
+    path: ./Rules/FL-Rules/Scholar.yaml
+    interval: 86400
+  miHoYoCN:
+    type: http
+    behavior: classical
+    format: yaml
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/miHoYoCN.yaml
+    path: ./Rules/FL-Rules/miHoYoCN.yaml
+    interval: 86400
+  HoYoverse:
+    type: http
+    behavior: classical
+    format: yaml
+    url: https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/HoYoverse.yaml
+    path: ./Rules/FL-Rules/HoYoverse.yaml
+    interval: 86400

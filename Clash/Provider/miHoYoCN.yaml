@@ -1,0 +1,20 @@
+payload:
+  # miHoYo mainland / CN
+  # Source: MetaCubeX/meta-rules-dat @ 4d9cbf4cc642e29a5cb016a724083094d9a01d99
+  # geo/geosite/classical/mihoyo-cn.yaml
+  - DOMAIN-SUFFIX,mhystatic.com
+  - DOMAIN-SUFFIX,mhyurl.cn
+  - DOMAIN-SUFFIX,mihayo.com
+  - DOMAIN-SUFFIX,mihayou.com
+  - DOMAIN-SUFFIX,mihoyo.com
+  - DOMAIN-SUFFIX,mihoyocg.com
+  - DOMAIN-SUFFIX,mihoyogift.com
+  - DOMAIN-SUFFIX,mihoyomall.com
+  - DOMAIN-SUFFIX,miyoushe.com
+  - DOMAIN-SUFFIX,benghuai.com
+  - DOMAIN-SUFFIX,bh3.com
+  - DOMAIN-SUFFIX,bhsr.com
+  - DOMAIN-SUFFIX,themisweeps.com
+  - DOMAIN-SUFFIX,yuanshen.com
+  - DOMAIN-SUFFIX,juequling.com
+  - DOMAIN-REGEX,^.+-mihayo\.akamaized\.net$

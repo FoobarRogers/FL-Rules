@@ -169,3 +169,11 @@ payload:
   # > YouTube
   - PROCESS-NAME,com.google.android.youtube
   - PROCESS-NAME,com.google.android.youtube.tv
+
+  # FL-Rules additions: MetaCubeX review, 2026-10-30
+  # YouTube / Google
+  - DOMAIN,yt3.googleusercontent.com
+  # YouTube / Google
+  - DOMAIN-SUFFIX,ggpht.com
+  # YouTube / Google
+  - DOMAIN-SUFFIX,wide-youtube.l.google.com

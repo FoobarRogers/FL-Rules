@@ -1,0 +1,846 @@
+{
+  "date": "2026-10-30",
+  "fork_base": "77e52145ca1934222d3bf68f214ff39a4d98fb1c",
+  "candidate_meta_commit": "74246501fd12b938b73482f406a6163d1e4a460f",
+  "mihoyo_meta_commit": "4d9cbf4cc642e29a5cb016a724083094d9a01d99",
+  "policy": {
+    "add_no_resolve": false,
+    "steam_cdn_additions": false,
+    "preserve_existing_rules": true,
+    "legacy_mihoyo_preserved": true
+  },
+  "accepted": [
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN,openaiassets.blob.core.windows.net",
+      "service": "OpenAI 资源（Azure Blob 承载）",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN,ppl-ai-file-upload.s3.amazonaws.com",
+      "service": "Perplexity 文件上传（Amazon S3 承载）",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN,pplx-res.cloudinary.com",
+      "service": "Perplexity 资源（Cloudinary 承载）",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,agentclientprotocol.com",
+      "service": "Agent Client Protocol（ACP 协议项目）",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,anythingllm.com",
+      "service": "AnythingLLM",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,arena.ai",
+      "service": "Arena / LMArena",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,artificialanalysis.ai",
+      "service": "Artificial Analysis（AI 评测）",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN,chatgpt.livekit.cloud",
+      "service": "ChatGPT 实时功能（LiveKit 承载，社区归类）",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,chutes.ai",
+      "service": "Chutes（推理服务）",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,clawhub.ai",
+      "service": "ClawHub（仅社区收录，运营主体未独立核验）",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,cline.bot",
+      "service": "Cline",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,coderabbit.ai",
+      "service": "CodeRabbit",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN,coderabbit.gallery.vsassets.io",
+      "service": "CodeRabbit 的 VS Marketplace 资源（Azure 承载）",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,comfy.org",
+      "service": "Comfy / ComfyUI",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,comfyci.org",
+      "service": "Comfy 项目构建服务（社区归类）",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,comfyregistry.org",
+      "service": "Comfy Registry",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,commandcode.ai",
+      "service": "CommandCode",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,context7.com",
+      "service": "Context7 / Upstash",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,crewai.com",
+      "service": "CrewAI",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,deepwiki.com",
+      "service": "DeepWiki",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,deepwiki.org",
+      "service": "DeepWiki（社区归类）",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,devin.ai",
+      "service": "Devin / Cognition",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,dreamgen.com",
+      "service": "DreamGen",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,duck.ai",
+      "service": "Duck.ai / DuckDuckGo",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,elevenlabs.com",
+      "service": "ElevenLabs",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,elevenlabs.io",
+      "service": "ElevenLabs",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,grazie.ai",
+      "service": "Grazie / JetBrains",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,grazie.aws.intellij.net",
+      "service": "Grazie / JetBrains（AWS 承载）",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,h2o.ai",
+      "service": "H2O.ai",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,hf.co",
+      "service": "Hugging Face",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,hf.space",
+      "service": "Hugging Face Spaces",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,huggingface.co",
+      "service": "Hugging Face",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,langchain.com",
+      "service": "LangChain",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,lmstudio.ai",
+      "service": "LM Studio",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,lovart.ai",
+      "service": "Lovart",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,magnific.com",
+      "service": "Magnific",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,manus.im",
+      "service": "Manus",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,manuscdn.com",
+      "service": "Manus 的 CDN",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,midjourney.com",
+      "service": "Midjourney",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,minimax.io",
+      "service": "MiniMax 海外服务",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,mozilla.ai",
+      "service": "Mozilla.ai",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,notegpt.io",
+      "service": "NoteGPT",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,nousresearch.com",
+      "service": "Nous Research",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,novelai.net",
+      "service": "NovelAI",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,ollama.com",
+      "service": "Ollama",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,openclaw.ai",
+      "service": "OpenClaw",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,opencode.ai",
+      "service": "OpenCode",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,openspec.dev",
+      "service": "OpenSpec",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,perplexity.com",
+      "service": "Perplexity",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,plannotator.ai",
+      "service": "Plannotator",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,poe.com",
+      "service": "Poe / Quora",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,poecdn.net",
+      "service": "Poe 的 CDN",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,qoder.com",
+      "service": "Qoder",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,sider.ai",
+      "service": "Sider",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,tapnow.ai",
+      "service": "TapNow",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,tripo3d.ai",
+      "service": "Tripo",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,windsurf.build",
+      "service": "Windsurf 的构建/下载服务（社区归类）",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,youmind.ai",
+      "service": "YouMind",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,youmind.com",
+      "service": "YouMind",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-SUFFIX,youmind.site",
+      "service": "YouMind",
+      "source_set": "category-ai-!cn"
+    },
+    {
+      "group": "Steam",
+      "rule": "DOMAIN-SUFFIX,playartifact.com",
+      "service": "Steam / Valve",
+      "source_set": "steam"
+    },
+    {
+      "group": "Steam",
+      "rule": "DOMAIN-SUFFIX,steamos.cloud",
+      "service": "Steam / Valve",
+      "source_set": "steam"
+    },
+    {
+      "group": "Netflix",
+      "rule": "DOMAIN-SUFFIX,netflix.com.edgesuite.net",
+      "service": "Netflix；承载方 Akamai",
+      "source_set": "netflix"
+    },
+    {
+      "group": "Netflix",
+      "rule": "DOMAIN-SUFFIX,nflxsearch.net",
+      "service": "Netflix",
+      "source_set": "netflix"
+    },
+    {
+      "group": "Discord",
+      "rule": "DOMAIN,discord-attachments-uploads-prd.storage.googleapis.com",
+      "service": "Discord；承载方 Google Cloud Storage",
+      "source_set": "discord"
+    },
+    {
+      "group": "Discord",
+      "rule": "DOMAIN-SUFFIX,discord-activities.com",
+      "service": "Discord",
+      "source_set": "discord"
+    },
+    {
+      "group": "Discord",
+      "rule": "DOMAIN-SUFFIX,discord.new",
+      "service": "Discord",
+      "source_set": "discord"
+    },
+    {
+      "group": "Discord",
+      "rule": "DOMAIN-SUFFIX,discordactivities.com",
+      "service": "Discord",
+      "source_set": "discord"
+    },
+    {
+      "group": "Discord",
+      "rule": "DOMAIN-SUFFIX,discordcdn.com",
+      "service": "Discord",
+      "source_set": "discord"
+    },
+    {
+      "group": "Discord",
+      "rule": "DOMAIN-SUFFIX,discordpartygames.com",
+      "service": "Discord",
+      "source_set": "discord"
+    },
+    {
+      "group": "YouTube",
+      "rule": "DOMAIN,yt3.googleusercontent.com",
+      "service": "YouTube / Google",
+      "source_set": "youtube"
+    },
+    {
+      "group": "YouTube",
+      "rule": "DOMAIN-SUFFIX,ggpht.com",
+      "service": "YouTube / Google",
+      "source_set": "youtube"
+    },
+    {
+      "group": "YouTube",
+      "rule": "DOMAIN-SUFFIX,wide-youtube.l.google.com",
+      "service": "YouTube / Google",
+      "source_set": "youtube"
+    },
+    {
+      "group": "Telegram",
+      "rule": "DOMAIN-SUFFIX,comments.app",
+      "service": "Comments.app（Telegram 评论组件）",
+      "source_set": "telegram"
+    },
+    {
+      "group": "Telegram",
+      "rule": "DOMAIN-SUFFIX,fragment.com",
+      "service": "Fragment（Telegram 用户名等相关服务）",
+      "source_set": "telegram"
+    },
+    {
+      "group": "Telegram",
+      "rule": "DOMAIN-SUFFIX,usercontent.dev",
+      "service": "Telegram 相关用户内容域名（社区归类）",
+      "source_set": "telegram"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktok-row.net",
+      "service": "TikTok / 字节海外",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktokcdn-eu.com",
+      "service": "TikTok / 字节海外",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktokcdn-us.com",
+      "service": "TikTok / 字节海外",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktokcdn-us.com.edgesuite.net",
+      "service": "TikTok / 字节海外；承载方 Akamai",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktokcdn.com.akamaized.net",
+      "service": "TikTok / 字节海外；承载方 Akamai",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktokcdn.com.edgesuite.net",
+      "service": "TikTok / 字节海外；承载方 Akamai",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktokd.net",
+      "service": "TikTok / 字节海外",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktokd.org",
+      "service": "TikTok / 字节海外",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktokeu-cdn.com",
+      "service": "TikTok / 字节海外",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktokrow-cdn.com",
+      "service": "TikTok / 字节海外",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktokv.com.edgekey.net",
+      "service": "TikTok / 字节海外；承载方 Akamai",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktokv.com.edgesuite.net",
+      "service": "TikTok / 字节海外；承载方 Akamai",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktokv.eu",
+      "service": "TikTok / 字节海外",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktokv.us",
+      "service": "TikTok / 字节海外",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktokw.eu",
+      "service": "TikTok / 字节海外",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,tiktokw.us",
+      "service": "TikTok / 字节海外",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,ttcdn-us.com",
+      "service": "TikTok / 字节海外",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,ttlivecdn.com",
+      "service": "TikTok / 字节海外",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,ttoverseaus.net",
+      "service": "TikTok / 字节海外",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "TikTok",
+      "rule": "DOMAIN-SUFFIX,ttwstatic.com",
+      "service": "TikTok / 字节海外",
+      "source_set": "tiktok"
+    },
+    {
+      "group": "Spotify",
+      "rule": "DOMAIN-SUFFIX,spotify.com.edgesuite.net",
+      "service": "Spotify；承载方 Akamai",
+      "source_set": "spotify"
+    },
+    {
+      "group": "Max",
+      "rule": "DOMAIN-SUFFIX,hbo.com.c.footprint.net",
+      "service": "HBO / Max；承载方 CDN（Footprint，历史名称）",
+      "source_set": "hbo"
+    },
+    {
+      "group": "Max",
+      "rule": "DOMAIN-SUFFIX,hbo.com.edgesuite.net",
+      "service": "HBO / Max；承载方 Akamai",
+      "source_set": "hbo"
+    },
+    {
+      "group": "Max",
+      "rule": "DOMAIN-SUFFIX,hbo.map.fastly.net",
+      "service": "HBO / Max；承载方 Fastly",
+      "source_set": "hbo"
+    },
+    {
+      "group": "Max",
+      "rule": "DOMAIN-SUFFIX,hbolacontent.net",
+      "service": "HBO / Max",
+      "source_set": "hbo"
+    },
+    {
+      "group": "Max",
+      "rule": "DOMAIN-SUFFIX,hbomaxcdn.com",
+      "service": "HBO / Max",
+      "source_set": "hbo"
+    },
+    {
+      "group": "Max",
+      "rule": "DOMAIN-SUFFIX,hbomaxdash.s.llnwi.net",
+      "service": "HBO / Max；承载方 Limelight / Edgio（历史 CDN 名称）",
+      "source_set": "hbo"
+    },
+    {
+      "group": "Abema TV",
+      "rule": "DOMAIN,abematv.akamaized.net",
+      "service": "ABEMA；承载方 Akamai",
+      "source_set": "abema"
+    },
+    {
+      "group": "BBC iPlayer",
+      "rule": "DOMAIN,vod-dash-ww-live.akamaized.net",
+      "service": "BBC iPlayer；承载方 Akamai",
+      "source_set": "bbc"
+    },
+    {
+      "group": "BBC iPlayer",
+      "rule": "DOMAIN,vod-thumb-ww-live.akamaized.net",
+      "service": "BBC iPlayer；承载方 Akamai",
+      "source_set": "bbc"
+    },
+    {
+      "group": "BBC iPlayer",
+      "rule": "DOMAIN,vs-cmaf-pushb-ww-live.akamaized.net",
+      "service": "BBC iPlayer；承载方 Akamai",
+      "source_set": "bbc"
+    },
+    {
+      "group": "BBC iPlayer",
+      "rule": "DOMAIN-SUFFIX,bbc.mp-pxcdn.com",
+      "service": "BBC iPlayer",
+      "source_set": "bbc"
+    },
+    {
+      "group": "DAZN",
+      "rule": "DOMAIN-SUFFIX,daznfeeds.com",
+      "service": "DAZN",
+      "source_set": "dazn"
+    },
+    {
+      "group": "DAZN",
+      "rule": "DOMAIN-SUFFIX,daznplayer.com",
+      "service": "DAZN",
+      "source_set": "dazn"
+    },
+    {
+      "group": "DAZN",
+      "rule": "DOMAIN-SUFFIX,daznservices.com",
+      "service": "DAZN",
+      "source_set": "dazn"
+    },
+    {
+      "group": "DMM",
+      "rule": "DOMAIN-SUFFIX,dmmapis.com",
+      "service": "DMM",
+      "source_set": "dmm"
+    },
+    {
+      "group": "F1 TV",
+      "rule": "DOMAIN-SUFFIX,f1tv.com",
+      "service": "F1 TV / Formula 1",
+      "source_set": "formula1"
+    },
+    {
+      "group": "KKBOX",
+      "rule": "DOMAIN-SUFFIX,kk.stream",
+      "service": "KKBOX / KKTV 共用流媒体域名（两者均为 Asian TV）",
+      "source_set": "kkbox"
+    },
+    {
+      "group": "KKTV",
+      "rule": "DOMAIN-SUFFIX,theater-kktv.cdn.hinet.net",
+      "service": "KKTV；承载方 中华电信 HiNet",
+      "source_set": "kktv"
+    },
+    {
+      "group": "Niconico",
+      "rule": "DOMAIN-SUFFIX,nico.ms",
+      "service": "Niconico / 多玩国",
+      "source_set": "niconico"
+    },
+    {
+      "group": "Niconico",
+      "rule": "DOMAIN-SUFFIX,nicochannel.jp",
+      "service": "Niconico / 多玩国",
+      "source_set": "niconico"
+    },
+    {
+      "group": "Soundcloud",
+      "rule": "DOMAIN-SUFFIX,soundcloud.cloud",
+      "service": "SoundCloud",
+      "source_set": "soundcloud"
+    }
+  ],
+  "deferred": [
+    {
+      "group": "AI Suite",
+      "rule": "DOMAIN-REGEX,^chatgpt-async-webps-prod-\\S+-\\d+\\.webpubsub\\.azure\\.com$",
+      "service": "ChatGPT 异步消息（Azure Web PubSub，社区归类）",
+      "source_set": "category-ai-!cn",
+      "final_reason": "暂缓：云租户正则或 CloudFront 分配地址缺少独立的当前用途核验"
+    },
+    {
+      "group": "Steam",
+      "rule": "DOMAIN,steamcloudsweden.blob.core.windows.net",
+      "service": "Steam / Valve；承载方 Microsoft Azure Blob",
+      "source_set": "steam",
+      "final_reason": "按用户要求，本轮不增加 Steam CDN"
+    },
+    {
+      "group": "Steam",
+      "rule": "DOMAIN,steamcommunity-a.akamaihd.net.edgesuite.net",
+      "service": "Steam / Valve；承载方 Akamai",
+      "source_set": "steam",
+      "final_reason": "按用户要求，本轮不增加 Steam CDN"
+    },
+    {
+      "group": "Steam",
+      "rule": "DOMAIN,steampipe-kr.akamaized.net",
+      "service": "Steam / Valve；承载方 Akamai",
+      "source_set": "steam",
+      "final_reason": "按用户要求，本轮不增加 Steam CDN"
+    },
+    {
+      "group": "Steam",
+      "rule": "DOMAIN,steampipe-partner.akamaized.net",
+      "service": "Steam / Valve；承载方 Akamai",
+      "source_set": "steam",
+      "final_reason": "按用户要求，本轮不增加 Steam CDN"
+    },
+    {
+      "group": "Steam",
+      "rule": "DOMAIN,steamugcquincy.blob.core.windows.net",
+      "service": "Steam / Valve；承载方 Microsoft Azure Blob",
+      "source_set": "steam",
+      "final_reason": "按用户要求，本轮不增加 Steam CDN"
+    },
+    {
+      "group": "Steam",
+      "rule": "DOMAIN,steamvideo-a.akamaihd.net",
+      "service": "Steam / Valve；承载方 Akamai",
+      "source_set": "steam",
+      "final_reason": "按用户要求，本轮不增加 Steam CDN"
+    },
+    {
+      "group": "Netflix",
+      "rule": "DOMAIN-REGEX,(^|\\.)apiproxy-device-prod-nlb-.+\\.amazonaws\\.com$",
+      "service": "Netflix；承载方 Amazon AWS",
+      "source_set": "netflix",
+      "final_reason": "暂缓：云租户正则或 CloudFront 分配地址缺少独立的当前用途核验"
+    },
+    {
+      "group": "Netflix",
+      "rule": "DOMAIN-REGEX,(^|\\.)apiproxy-website-nlb-prod-.+\\.amazonaws\\.com$",
+      "service": "Netflix；承载方 Amazon AWS",
+      "source_set": "netflix",
+      "final_reason": "暂缓：云租户正则或 CloudFront 分配地址缺少独立的当前用途核验"
+    },
+    {
+      "group": "Netflix",
+      "rule": "DOMAIN-REGEX,(^|\\.)dualstack\\.apiproxy-.+\\.amazonaws\\.com$",
+      "service": "Netflix；承载方 Amazon AWS",
+      "source_set": "netflix",
+      "final_reason": "暂缓：云租户正则或 CloudFront 分配地址缺少独立的当前用途核验"
+    },
+    {
+      "group": "Netflix",
+      "rule": "DOMAIN-REGEX,(^|\\.)dualstack\\.ichnaea-web-.+\\.amazonaws\\.com$",
+      "service": "Netflix；承载方 Amazon AWS",
+      "source_set": "netflix",
+      "final_reason": "暂缓：云租户正则或 CloudFront 分配地址缺少独立的当前用途核验"
+    },
+    {
+      "group": "ViuTV",
+      "rule": "DOMAIN,d1k2us671qcoau.cloudfront.net",
+      "service": "Viu / ViuTV；承载方 Amazon CloudFront",
+      "source_set": "viu",
+      "final_reason": "暂缓：云租户正则或 CloudFront 分配地址缺少独立的当前用途核验"
+    },
+    {
+      "group": "ViuTV",
+      "rule": "DOMAIN,d2anahhhmp1ffz.cloudfront.net",
+      "service": "Viu / ViuTV；承载方 Amazon CloudFront",
+      "source_set": "viu",
+      "final_reason": "暂缓：云租户正则或 CloudFront 分配地址缺少独立的当前用途核验"
+    },
+    {
+      "group": "ViuTV",
+      "rule": "DOMAIN,dfp6rglgjqszk.cloudfront.net",
+      "service": "Viu / ViuTV；承载方 Amazon CloudFront",
+      "source_set": "viu",
+      "final_reason": "暂缓：云租户正则或 CloudFront 分配地址缺少独立的当前用途核验"
+    }
+  ],
+  "new_providers": [
+    "Clash/Provider/miHoYoCN.yaml",
+    "Clash/Provider/HoYoverse.yaml"
+  ],
+  "counts": {
+    "AI Suite": 60,
+    "Steam": 2,
+    "Netflix": 2,
+    "Discord": 6,
+    "YouTube": 3,
+    "Telegram": 3,
+    "TikTok": 20,
+    "Spotify": 1,
+    "Max": 6,
+    "Abema TV": 1,
+    "BBC iPlayer": 4,
+    "DAZN": 3,
+    "DMM": 1,
+    "F1 TV": 1,
+    "KKBOX": 1,
+    "KKTV": 1,
+    "Niconico": 2,
+    "Soundcloud": 1
+  }
+}

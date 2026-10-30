@@ -21,3 +21,13 @@ payload:
   - DOMAIN,vs-hls-push-uk-live.akamaized.net
   - DOMAIN,vs-hls-pushb-uk-live.akamaized.net
   - PROCESS-NAME,bbc.iplayer.android
+
+  # FL-Rules additions: MetaCubeX review, 2026-10-30
+  # BBC iPlayer；承载方 Akamai
+  - DOMAIN,vod-dash-ww-live.akamaized.net
+  # BBC iPlayer；承载方 Akamai
+  - DOMAIN,vod-thumb-ww-live.akamaized.net
+  # BBC iPlayer；承载方 Akamai
+  - DOMAIN,vs-cmaf-pushb-ww-live.akamaized.net
+  # BBC iPlayer
+  - DOMAIN-SUFFIX,bbc.mp-pxcdn.com

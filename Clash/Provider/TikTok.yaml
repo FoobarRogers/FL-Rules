@@ -12,3 +12,45 @@ payload:
   - DOMAIN-SUFFIX,tiktok.com
   - DOMAIN-SUFFIX,tiktokcdn.com
   - DOMAIN-SUFFIX,tiktokv.com
+
+  # FL-Rules additions: MetaCubeX review, 2026-10-30
+  # TikTok / 字节海外
+  - DOMAIN-SUFFIX,tiktok-row.net
+  # TikTok / 字节海外
+  - DOMAIN-SUFFIX,tiktokcdn-eu.com
+  # TikTok / 字节海外
+  - DOMAIN-SUFFIX,tiktokcdn-us.com
+  # TikTok / 字节海外；承载方 Akamai
+  - DOMAIN-SUFFIX,tiktokcdn-us.com.edgesuite.net
+  # TikTok / 字节海外；承载方 Akamai
+  - DOMAIN-SUFFIX,tiktokcdn.com.akamaized.net
+  # TikTok / 字节海外；承载方 Akamai
+  - DOMAIN-SUFFIX,tiktokcdn.com.edgesuite.net
+  # TikTok / 字节海外
+  - DOMAIN-SUFFIX,tiktokd.net
+  # TikTok / 字节海外
+  - DOMAIN-SUFFIX,tiktokd.org
+  # TikTok / 字节海外
+  - DOMAIN-SUFFIX,tiktokeu-cdn.com
+  # TikTok / 字节海外
+  - DOMAIN-SUFFIX,tiktokrow-cdn.com
+  # TikTok / 字节海外；承载方 Akamai
+  - DOMAIN-SUFFIX,tiktokv.com.edgekey.net
+  # TikTok / 字节海外；承载方 Akamai
+  - DOMAIN-SUFFIX,tiktokv.com.edgesuite.net
+  # TikTok / 字节海外
+  - DOMAIN-SUFFIX,tiktokv.eu
+  # TikTok / 字节海外
+  - DOMAIN-SUFFIX,tiktokv.us
+  # TikTok / 字节海外
+  - DOMAIN-SUFFIX,tiktokw.eu
+  # TikTok / 字节海外
+  - DOMAIN-SUFFIX,tiktokw.us
+  # TikTok / 字节海外
+  - DOMAIN-SUFFIX,ttcdn-us.com
+  # TikTok / 字节海外
+  - DOMAIN-SUFFIX,ttlivecdn.com
+  # TikTok / 字节海外
+  - DOMAIN-SUFFIX,ttoverseaus.net
+  # TikTok / 字节海外
+  - DOMAIN-SUFFIX,ttwstatic.com

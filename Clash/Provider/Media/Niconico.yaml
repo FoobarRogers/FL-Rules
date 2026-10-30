@@ -9,3 +9,9 @@ payload:
   - DOMAIN-SUFFIX,nimg.jp
   - DOMAIN-SUFFIX,simg.jp
   - DOMAIN-SUFFIX,socdm.com
+
+  # FL-Rules additions: MetaCubeX review, 2026-10-30
+  # Niconico / 多玩国
+  - DOMAIN-SUFFIX,nico.ms
+  # Niconico / 多玩国
+  - DOMAIN-SUFFIX,nicochannel.jp

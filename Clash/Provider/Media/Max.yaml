@@ -19,3 +19,17 @@ payload:
   - DOMAIN-SUFFIX,ngtv.io
   - DOMAIN-SUFFIX,pypestream.com
   - DOMAIN-SUFFIX,warnermediacdn.com
+
+  # FL-Rules additions: MetaCubeX review, 2026-10-30
+  # HBO / Max；承载方 CDN（Footprint，历史名称）
+  - DOMAIN-SUFFIX,hbo.com.c.footprint.net
+  # HBO / Max；承载方 Akamai
+  - DOMAIN-SUFFIX,hbo.com.edgesuite.net
+  # HBO / Max；承载方 Fastly
+  - DOMAIN-SUFFIX,hbo.map.fastly.net
+  # HBO / Max
+  - DOMAIN-SUFFIX,hbolacontent.net
+  # HBO / Max
+  - DOMAIN-SUFFIX,hbomaxcdn.com
+  # HBO / Max；承载方 Limelight / Edgio（历史 CDN 名称）
+  - DOMAIN-SUFFIX,hbomaxdash.s.llnwi.net

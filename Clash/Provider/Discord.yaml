@@ -9,3 +9,17 @@ payload:
   - DOMAIN-SUFFIX,discordapp.com
   - DOMAIN-SUFFIX,discordapp.net
   - DOMAIN-SUFFIX,discordstatus.com
+
+  # FL-Rules additions: MetaCubeX review, 2026-10-30
+  # Discord；承载方 Google Cloud Storage
+  - DOMAIN,discord-attachments-uploads-prd.storage.googleapis.com
+  # Discord
+  - DOMAIN-SUFFIX,discord-activities.com
+  # Discord
+  - DOMAIN-SUFFIX,discord.new
+  # Discord
+  - DOMAIN-SUFFIX,discordactivities.com
+  # Discord
+  - DOMAIN-SUFFIX,discordcdn.com
+  # Discord
+  - DOMAIN-SUFFIX,discordpartygames.com
