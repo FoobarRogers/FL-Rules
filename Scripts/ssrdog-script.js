@@ -1007,6 +1007,21 @@ function applyUnifiedProfile(config) {
   });
   newProxyGroups.push(...countryProxyGroups);
 
+  // 应用手选组的地区排列；缺少某地区时只使用当前实际存在的成员。
+  // 首次选择采用首项；客户端保存的旧选择仍可能优先生效。
+  const APP_REGION_PRIORITY = {
+    "Netflix": ["狮城策略", "香港策略"],
+    "Max": ["狮城策略", "香港策略"],
+    "Asian TV": ["台湾策略", "香港策略"]
+  };
+  newProxyGroups.forEach(group => {
+    const preferred = APP_REGION_PRIORITY[group.name];
+    if (!preferred || group.type !== "select" || !Array.isArray(group.proxies)) return;
+    const available = preferred.filter(name => group.proxies.includes(name));
+    group.proxies = unique([...available, ...group.proxies]);
+  });
+
+
   // 4. 只替换规则的最终出站字段，不改 RULE-SET 的规则集名称。
   // 从末尾定位，兼容 AND/OR/NOT 中的逗号，以及 no-resolve/src 附加参数。
   // SUB-RULE 的末项是子规则名称，不是出站，必须原样保留。
@@ -1187,7 +1202,9 @@ function oixIsInfoNode(name) {
   if (typeof name !== "string" || !name.trim()) {
     throw new Error("订阅中存在缺少名称的节点。");
   }
-  return /剩余流量|套餐到期|到期时间|过期时间|有效时间|流量重置|\b(?:Traffic|Expire|Expiration)\b/i.test(name) ||
+  // 英文提示匹配明确的开头，避免把 High Traffic 等真实节点名称排除。
+  return /剩余流量|套餐到期|到期时间|过期时间|有效时间|流量重置/i.test(name) ||
+    /^\s*(?:(?:Traffic\s+(?:Reset|Remaining|Used|Total)|(?:Remaining|Used|Total)\s+Traffic)\b|(?:Expire|Expires|Expiry|Expiration)(?:\s+(?:Date|Time))?\s*[:：])/i.test(name) ||
     /^\s*\d+(?:\.\d+)?\s*(?:[KMGTPE]?i?B)\s*[|丨/]\s*\d+(?:\.\d+)?\s*(?:[KMGTPE]?i?B)\s*$/i.test(name);
 }
 

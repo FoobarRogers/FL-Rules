@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-30",
+  "fixture": "SSRDOG2.yaml node names only; connection credentials not copied",
+  "input_entries": 39,
+  "real_nodes": 36,
+  "info_entries": 3,
+  "region_counts": {
+    "香港策略": 5,
+    "台湾策略": 5,
+    "狮城策略": 5,
+    "日本策略": 5,
+    "韩国策略": 1,
+    "美国策略": 5,
+    "欧盟策略": 4,
+    "冷门自选": 6
+  },
+  "real_nodes_covered_once": true,
+  "real_nodes_in_main_group": true,
+  "output_node_count_preserved": true,
+  "no_node_parameter_changes": true,
+  "group_priorities": {
+    "Netflix": [
+      "狮城策略",
+      "香港策略"
+    ],
+    "Max": [
+      "狮城策略",
+      "香港策略"
+    ],
+    "Asian TV": [
+      "台湾策略",
+      "香港策略"
+    ]
+  },
+  "missing_region_scenarios": 5,
+  "english_info_false_positive_fixed": true,
+  "identical_scripts": true,
+  "only_requested_group_order_changed_on_supplied_fixture": true,
+  "limits": [
+    "未在用户本机实测加载、测速或联网；未核验节点流媒体解锁情况",
+    "OIX 使用代表性名称用例验证，未重新取得当前完整节点列表"
+  ]
+}
