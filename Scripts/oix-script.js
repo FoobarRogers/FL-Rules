@@ -1010,9 +1010,9 @@ function applyUnifiedProfile(config) {
   // 应用手选组的地区排列；缺少某地区时只使用当前实际存在的成员。
   // 首次选择采用首项；客户端保存的旧选择仍可能优先生效。
   const APP_REGION_PRIORITY = {
-    "Netflix": ["狮城策略", "香港策略"],
-    "Max": ["狮城策略", "香港策略"],
-    "Asian TV": ["台湾策略", "香港策略"]
+    "Netflix": ["狮城策略"],
+    "Max": ["狮城策略"],
+    "Asian TV": ["台湾策略"]
   };
   newProxyGroups.forEach(group => {
     const preferred = APP_REGION_PRIORITY[group.name];
