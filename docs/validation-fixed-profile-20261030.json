@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-30",
+  "fixed_structure": true,
+  "subscription_fields_read": [
+    "proxies",
+    "dns"
+  ],
+  "subscription_routing_fields_not_read": [
+    "proxy-groups",
+    "rule-providers",
+    "rules"
+  ],
+  "identical_execution_code": true,
+  "output_matches_previous_ssrdog": true,
+  "dns_scenarios": 4,
+  "routing_rules": 65,
+  "providers": 63,
+  "group_references_valid": true,
+  "no_group_cycles": true,
+  "node_parameters_preserved": true,
+  "input_not_mutated": true,
+  "real_credentials_used": false,
+  "limits": [
+    "未在用户本机进行 FlClash 加载及联网验证"
+  ]
+}

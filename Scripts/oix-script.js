@@ -1,15 +1,807 @@
 /*
- * oixCloud：继承输入订阅的规则结构，接入 FoobarRogers/FL-Rules 增量。
- * 用本文件整体替换 Script；输入须包含节点、策略组、规则及规则集。
- * miHoYo 拆分为 mihoyo（大陆，默认直连）和 hoyoverse（海外，默认代理）。
- * 保留原规则的 no-resolve 状态；DNS 继承订阅，由客户端按项覆写。
- * 地区内测速、节点识别与同包 SSRDOG 版一致；没有跨地区自动选择组。
- * 客户端可能记住旧选择，应用后请检查两个米哈游组的实际出口。
+ * oixCloud：只读取输入订阅的内联 proxies 和 dns，使用自维护的统一分流模板。
+ * OIX 与 SSRDOG 两份脚本的执行代码完全相同；文件名仅用于区分使用位置。
+ * 分组、规则、Provider、默认出口均在脚本内固定，不读取订阅中的分流设计。
+ * 本模板含 65 条路由、63 个 FL-Rules Provider；分组结构改动需更新脚本。
+ * Provider 内容按 interval 更新；节点与 DNS 各自随当前订阅更新。
+ * 大陆 mihoyo 默认直连，海外 hoyoverse 默认代理；不额外追加 no-resolve。
+ * 无实际节点、账号、密码或订阅链接；每份 JS 均可独立运行。
  */
 function main(config) {
+  if (!config || !Array.isArray(config.proxies) || config.proxies.length === 0) {
+    throw new Error("脚本需要订阅中的内联 proxies 节点。");
+  }
+  // 复制节点对象；下方另行保留 DNS。协议、服务器、密码、SNI 等属性完整保留。
+  const proxies = JSON.parse(JSON.stringify(config.proxies));
+  const normalNames = proxies.filter(proxy => !oixIsInfoNode(proxy.name)).map(proxy => proxy.name);
+  if (normalNames.length === 0) throw new Error("订阅只有流量/到期提示，没有可用节点。");
 
-  // ================= 官方同步与名称显示 =================
-  // 组名按下表显示；FL-Rules 的规则源和米哈游拆分在下方统一接入。
+  const profile = {
+  "proxy-groups": [
+    {
+      "name": "Proxy",
+      "type": "select",
+      "proxies": [
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Domestic",
+      "type": "select",
+      "proxies": [
+        "DIRECT",
+        "Proxy"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Others",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "AdBlock",
+      "type": "select",
+      "proxies": [
+        "REJECT",
+        "DIRECT",
+        "Proxy"
+      ]
+    },
+    {
+      "name": "Netflix",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Disney Plus",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "YouTube",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Max",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Spotify",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "CN Mainland TV",
+      "type": "select",
+      "proxies": [
+        "DIRECT",
+        "Proxy"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Asian TV",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Global TV",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Apple Push",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Apple Services",
+      "type": "select",
+      "proxies": [
+        "DIRECT",
+        "Proxy"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Apple TV",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Telegram",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Google FCM",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Crypto",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Discord",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Microsoft",
+      "type": "select",
+      "proxies": [
+        "DIRECT",
+        "Proxy"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "AI Suite",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "PayPal",
+      "type": "select",
+      "proxies": [
+        "DIRECT",
+        "Proxy"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Scholar",
+      "type": "select",
+      "proxies": [
+        "DIRECT",
+        "Proxy"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Speedtest",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "Steam",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "TikTok",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "miHoYo",
+      "type": "select",
+      "proxies": [
+        "DIRECT",
+        "Proxy"
+      ],
+      "_nodeScope": "all"
+    },
+    {
+      "name": "hoyoverse",
+      "type": "select",
+      "proxies": [
+        "Proxy",
+        "DIRECT"
+      ],
+      "_nodeScope": "all"
+    }
+  ],
+  "rule-providers": {
+    "AdBlock": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/AdBlock.yaml",
+      "path": "./Rules/FL-Rules/AdBlock.yaml",
+      "interval": 86400
+    },
+    "Special": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Special.yaml",
+      "path": "./Rules/FL-Rules/Special.yaml",
+      "interval": 86400
+    },
+    "PROXY": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Proxy.yaml",
+      "path": "./Rules/FL-Rules/Proxy.yaml",
+      "interval": 86400
+    },
+    "Domestic": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Domestic.yaml",
+      "path": "./Rules/FL-Rules/Domestic.yaml",
+      "interval": 86400
+    },
+    "Domestic IPs": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Domestic%20IPs.yaml",
+      "path": "./Rules/FL-Rules/Domestic%20IPs.yaml",
+      "interval": 86400
+    },
+    "LAN": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/LAN.yaml",
+      "path": "./Rules/FL-Rules/LAN.yaml",
+      "interval": 86400
+    },
+    "Netflix": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Netflix.yaml",
+      "path": "./Rules/FL-Rules/Media/Netflix.yaml",
+      "interval": 86400
+    },
+    "Spotify": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Spotify.yaml",
+      "path": "./Rules/FL-Rules/Media/Spotify.yaml",
+      "interval": 86400
+    },
+    "YouTube": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/YouTube.yaml",
+      "path": "./Rules/FL-Rules/Media/YouTube.yaml",
+      "interval": 86400
+    },
+    "Max": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Max.yaml",
+      "path": "./Rules/FL-Rules/Media/Max.yaml",
+      "interval": 86400
+    },
+    "Bilibili": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Bilibili.yaml",
+      "path": "./Rules/FL-Rules/Media/Bilibili.yaml",
+      "interval": 86400
+    },
+    "IQ": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/IQ.yaml",
+      "path": "./Rules/FL-Rules/Media/IQ.yaml",
+      "interval": 86400
+    },
+    "IQIYI": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/IQIYI.yaml",
+      "path": "./Rules/FL-Rules/Media/IQIYI.yaml",
+      "interval": 86400
+    },
+    "Letv": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Letv.yaml",
+      "path": "./Rules/FL-Rules/Media/Letv.yaml",
+      "interval": 86400
+    },
+    "Netease Music": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Netease%20Music.yaml",
+      "path": "./Rules/FL-Rules/Media/Netease%20Music.yaml",
+      "interval": 86400
+    },
+    "Tencent Video": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Tencent%20Video.yaml",
+      "path": "./Rules/FL-Rules/Media/Tencent%20Video.yaml",
+      "interval": 86400
+    },
+    "Youku": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Youku.yaml",
+      "path": "./Rules/FL-Rules/Media/Youku.yaml",
+      "interval": 86400
+    },
+    "WeTV": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/WeTV.yaml",
+      "path": "./Rules/FL-Rules/Media/WeTV.yaml",
+      "interval": 86400
+    },
+    "ABC": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/ABC.yaml",
+      "path": "./Rules/FL-Rules/Media/ABC.yaml",
+      "interval": 86400
+    },
+    "Abema TV": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Abema%20TV.yaml",
+      "path": "./Rules/FL-Rules/Media/Abema%20TV.yaml",
+      "interval": 86400
+    },
+    "Amazon": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Amazon.yaml",
+      "path": "./Rules/FL-Rules/Media/Amazon.yaml",
+      "interval": 86400
+    },
+    "Apple Music": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Apple%20Music.yaml",
+      "path": "./Rules/FL-Rules/Media/Apple%20Music.yaml",
+      "interval": 86400
+    },
+    "Apple News": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Apple%20News.yaml",
+      "path": "./Rules/FL-Rules/Media/Apple%20News.yaml",
+      "interval": 86400
+    },
+    "Apple TV": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Apple%20TV.yaml",
+      "path": "./Rules/FL-Rules/Media/Apple%20TV.yaml",
+      "interval": 86400
+    },
+    "Bahamut": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Bahamut.yaml",
+      "path": "./Rules/FL-Rules/Media/Bahamut.yaml",
+      "interval": 86400
+    },
+    "BBC iPlayer": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/BBC%20iPlayer.yaml",
+      "path": "./Rules/FL-Rules/Media/BBC%20iPlayer.yaml",
+      "interval": 86400
+    },
+    "DAZN": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/DAZN.yaml",
+      "path": "./Rules/FL-Rules/Media/DAZN.yaml",
+      "interval": 86400
+    },
+    "Discovery Plus": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Discovery%20Plus.yaml",
+      "path": "./Rules/FL-Rules/Media/Discovery%20Plus.yaml",
+      "interval": 86400
+    },
+    "Disney Plus": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Disney%20Plus.yaml",
+      "path": "./Rules/FL-Rules/Media/Disney%20Plus.yaml",
+      "interval": 86400
+    },
+    "DMM": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/DMM.yaml",
+      "path": "./Rules/FL-Rules/Media/DMM.yaml",
+      "interval": 86400
+    },
+    "encoreTVB": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/encoreTVB.yaml",
+      "path": "./Rules/FL-Rules/Media/encoreTVB.yaml",
+      "interval": 86400
+    },
+    "F1 TV": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/F1%20TV.yaml",
+      "path": "./Rules/FL-Rules/Media/F1%20TV.yaml",
+      "interval": 86400
+    },
+    "Fox Now": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Fox%20Now.yaml",
+      "path": "./Rules/FL-Rules/Media/Fox%20Now.yaml",
+      "interval": 86400
+    },
+    "Fox+": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Fox%2B.yaml",
+      "path": "./Rules/FL-Rules/Media/Fox%2B.yaml",
+      "interval": 86400
+    },
+    "Hulu Japan": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Hulu%20Japan.yaml",
+      "path": "./Rules/FL-Rules/Media/Hulu%20Japan.yaml",
+      "interval": 86400
+    },
+    "Hulu": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Hulu.yaml",
+      "path": "./Rules/FL-Rules/Media/Hulu.yaml",
+      "interval": 86400
+    },
+    "Japonx": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Japonx.yaml",
+      "path": "./Rules/FL-Rules/Media/Japonx.yaml",
+      "interval": 86400
+    },
+    "JOOX": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/JOOX.yaml",
+      "path": "./Rules/FL-Rules/Media/JOOX.yaml",
+      "interval": 86400
+    },
+    "KKBOX": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/KKBOX.yaml",
+      "path": "./Rules/FL-Rules/Media/KKBOX.yaml",
+      "interval": 86400
+    },
+    "KKTV": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/KKTV.yaml",
+      "path": "./Rules/FL-Rules/Media/KKTV.yaml",
+      "interval": 86400
+    },
+    "Line TV": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Line%20TV.yaml",
+      "path": "./Rules/FL-Rules/Media/Line%20TV.yaml",
+      "interval": 86400
+    },
+    "myTV SUPER": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/myTV%20SUPER.yaml",
+      "path": "./Rules/FL-Rules/Media/myTV%20SUPER.yaml",
+      "interval": 86400
+    },
+    "Niconico": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Niconico.yaml",
+      "path": "./Rules/FL-Rules/Media/Niconico.yaml",
+      "interval": 86400
+    },
+    "Pandora": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Pandora.yaml",
+      "path": "./Rules/FL-Rules/Media/Pandora.yaml",
+      "interval": 86400
+    },
+    "PBS": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/PBS.yaml",
+      "path": "./Rules/FL-Rules/Media/PBS.yaml",
+      "interval": 86400
+    },
+    "Pornhub": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Pornhub.yaml",
+      "path": "./Rules/FL-Rules/Media/Pornhub.yaml",
+      "interval": 86400
+    },
+    "Soundcloud": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/Soundcloud.yaml",
+      "path": "./Rules/FL-Rules/Media/Soundcloud.yaml",
+      "interval": 86400
+    },
+    "ViuTV": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Media/ViuTV.yaml",
+      "path": "./Rules/FL-Rules/Media/ViuTV.yaml",
+      "interval": 86400
+    },
+    "Telegram": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Telegram.yaml",
+      "path": "./Rules/FL-Rules/Telegram.yaml",
+      "interval": 86400
+    },
+    "Crypto": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Crypto.yaml",
+      "path": "./Rules/FL-Rules/Crypto.yaml",
+      "interval": 86400
+    },
+    "Discord": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Discord.yaml",
+      "path": "./Rules/FL-Rules/Discord.yaml",
+      "interval": 86400
+    },
+    "Steam": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Steam.yaml",
+      "path": "./Rules/FL-Rules/Steam.yaml",
+      "interval": 86400
+    },
+    "TikTok": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/TikTok.yaml",
+      "path": "./Rules/FL-Rules/TikTok.yaml",
+      "interval": 86400
+    },
+    "Speedtest": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Speedtest.yaml",
+      "path": "./Rules/FL-Rules/Speedtest.yaml",
+      "interval": 86400
+    },
+    "PayPal": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/PayPal.yaml",
+      "path": "./Rules/FL-Rules/PayPal.yaml",
+      "interval": 86400
+    },
+    "Microsoft": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Microsoft.yaml",
+      "path": "./Rules/FL-Rules/Microsoft.yaml",
+      "interval": 86400
+    },
+    "AI Suite": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/AI%20Suite.yaml",
+      "path": "./Rules/FL-Rules/AI%20Suite.yaml",
+      "interval": 86400
+    },
+    "Apple": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Apple.yaml",
+      "path": "./Rules/FL-Rules/Apple.yaml",
+      "interval": 86400
+    },
+    "Apple Push": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Apple%20Push.yaml",
+      "path": "./Rules/FL-Rules/Apple%20Push.yaml",
+      "interval": 86400
+    },
+    "Google FCM": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Google%20FCM.yaml",
+      "path": "./Rules/FL-Rules/Google%20FCM.yaml",
+      "interval": 86400
+    },
+    "Scholar": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/Scholar.yaml",
+      "path": "./Rules/FL-Rules/Scholar.yaml",
+      "interval": 86400
+    },
+    "miHoYoCN": {
+      "type": "http",
+      "behavior": "classical",
+      "format": "yaml",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/miHoYoCN.yaml",
+      "path": "./Rules/FL-Rules/miHoYoCN.yaml",
+      "interval": 86400
+    },
+    "HoYoverse": {
+      "type": "http",
+      "behavior": "classical",
+      "format": "yaml",
+      "url": "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/HoYoverse.yaml",
+      "path": "./Rules/FL-Rules/HoYoverse.yaml",
+      "interval": 86400
+    }
+  },
+  "rules": [
+    "RULE-SET,AdBlock,AdBlock",
+    "RULE-SET,Special,DIRECT",
+    "RULE-SET,Netflix,Netflix",
+    "RULE-SET,Disney Plus,Disney Plus",
+    "RULE-SET,YouTube,YouTube",
+    "RULE-SET,Max,Max",
+    "RULE-SET,Spotify,Spotify",
+    "RULE-SET,Abema TV,Asian TV",
+    "RULE-SET,Bahamut,Asian TV",
+    "RULE-SET,DMM,Asian TV",
+    "RULE-SET,Fox+,Asian TV",
+    "RULE-SET,Hulu Japan,Asian TV",
+    "RULE-SET,IQ,Asian TV",
+    "RULE-SET,Japonx,Asian TV",
+    "RULE-SET,JOOX,Asian TV",
+    "RULE-SET,KKBOX,Asian TV",
+    "RULE-SET,KKTV,Asian TV",
+    "RULE-SET,Line TV,Asian TV",
+    "RULE-SET,myTV SUPER,Asian TV",
+    "RULE-SET,Niconico,Asian TV",
+    "RULE-SET,ViuTV,Asian TV",
+    "RULE-SET,ABC,Global TV",
+    "RULE-SET,Amazon,Global TV",
+    "RULE-SET,BBC iPlayer,Global TV",
+    "RULE-SET,DAZN,Global TV",
+    "RULE-SET,Discovery Plus,Global TV",
+    "RULE-SET,encoreTVB,Global TV",
+    "RULE-SET,F1 TV,Global TV",
+    "RULE-SET,Fox Now,Global TV",
+    "RULE-SET,Hulu,Global TV",
+    "RULE-SET,Pandora,Global TV",
+    "RULE-SET,PBS,Global TV",
+    "RULE-SET,Pornhub,Global TV",
+    "RULE-SET,Soundcloud,Global TV",
+    "RULE-SET,Bilibili,CN Mainland TV",
+    "RULE-SET,IQIYI,CN Mainland TV",
+    "RULE-SET,Letv,CN Mainland TV",
+    "RULE-SET,Netease Music,CN Mainland TV",
+    "RULE-SET,Tencent Video,CN Mainland TV",
+    "RULE-SET,WeTV,CN Mainland TV",
+    "RULE-SET,Youku,CN Mainland TV",
+    "RULE-SET,Telegram,Telegram",
+    "RULE-SET,Crypto,Crypto",
+    "RULE-SET,Discord,Discord",
+    "RULE-SET,Google FCM,Google FCM",
+    "RULE-SET,AI Suite,AI Suite",
+    "RULE-SET,Microsoft,Microsoft",
+    "RULE-SET,PayPal,PayPal",
+    "RULE-SET,Scholar,Scholar",
+    "RULE-SET,Speedtest,Speedtest",
+    "RULE-SET,Steam,Steam",
+    "RULE-SET,TikTok,TikTok",
+    "RULE-SET,Apple Music,Apple TV",
+    "RULE-SET,Apple News,Apple TV",
+    "RULE-SET,Apple TV,Apple TV",
+    "RULE-SET,Apple Push,Apple Push",
+    "RULE-SET,Apple,Apple Services",
+    "RULE-SET,HoYoverse,hoyoverse",
+    "RULE-SET,miHoYoCN,miHoYo",
+    "RULE-SET,PROXY,Proxy",
+    "RULE-SET,Domestic,Domestic",
+    "RULE-SET,Domestic IPs,Domestic",
+    "RULE-SET,LAN,DIRECT",
+    "GEOIP,CN,Domestic",
+    "MATCH,Others"
+  ]
+};
+  profile.proxies = proxies;
+  // 节点启动解析由 SSRDOG 订阅维护，保留整段 DNS，不混入 OIX 专用地址。
+  if (Object.prototype.hasOwnProperty.call(config, "dns")) {
+    profile.dns = JSON.parse(JSON.stringify(config.dns));
+  }
+  profile["proxy-groups"].forEach(group => {
+    const scope = group._nodeScope;
+    delete group._nodeScope;
+    if (scope === "all") {
+      group.proxies.push(...(group.name === "Proxy" ? proxies.map(proxy => proxy.name) : normalNames));
+    }
+  });
+  return applyUnifiedProfile(profile);
+}
+
+function applyUnifiedProfile(config) {
+
+  // ================= 固定模板与名称显示 =================
+  // 组名按下表显示；分流结构与 FL-Rules 地址由上方内置模板统一维护。
   const GROUP_NAMES = {
     "Proxy": "默认代理",
     "Domestic": "直接连接",
@@ -26,19 +818,18 @@ function main(config) {
   };
 
   // true：覆盖全部节点的普通应用组，用地区组代替重复的长节点列表。
-  // 单独限定节点的组及自动测速组始终保留官方成员，避免扩大其范围。
+  // 单独限定节点的组及自动测速组始终保留模板成员，避免扩大其范围。
   const COMPACT_APP_GROUPS = true;
 
   if (!config || !Array.isArray(config["proxy-groups"]) ||
       !Array.isArray(config.rules) || config.rules.length === 0) {
-    throw new Error("需要完整的 oixCloud 订阅：缺少 proxy-groups 或 rules。");
+    throw new Error("内部固定模板缺少 proxy-groups 或 rules。");
   }
   if (!Array.isArray(config.proxies) || config.proxies.length === 0) {
-    throw new Error("此版本需要订阅中的内联节点。");
+    throw new Error("内部固定模板缺少节点。");
   }
-  applyFlRulesProfile(config);
 
-  // 不保留跨地区自动选择组。地区间由用户手动选择，区内仍可自动测速。
+  // 地区间由用户手动选择，区内保留自动测速。
   const sourceGroups = config["proxy-groups"];
   const removedAutoGroups = new Set(sourceGroups
     .filter(group => group.name === "Auto - UrlTest" || group.name === "自动选择")
@@ -46,10 +837,10 @@ function main(config) {
   const upstreamGroups = sourceGroups.filter(group => !removedAutoGroups.has(group.name));
   const upstreamRules = config.rules.slice();
   if (!upstreamGroups.some(group => group.name === "Proxy")) {
-    throw new Error("未找到官方 Proxy 组。请整体替换旧脚本，并在原始 oixCloud 订阅上运行。");
+    throw new Error("内部固定模板缺少 Proxy 组。");
   }
   if (!Array.isArray(config.proxies) || config.proxies.length === 0) {
-    throw new Error("此版本需要订阅中的内联节点。删除节点的对照 YAML 不能直接用于连接。");
+    throw new Error("内部固定模板缺少节点。");
   }
 
   const hasOwn = (object, key) => Object.prototype.hasOwnProperty.call(object, key);
@@ -143,7 +934,7 @@ function main(config) {
   ];
 
   // 2. 记录节点改名，随后同步所有明确的出站引用。
-  // 旧脚本会整理旗帜/节点名；直接保留官方组时不能遗漏这层转换。
+  // 旧脚本会整理旗帜/节点名；直接保留模板组时不能遗漏这层转换。
   proxies.forEach((proxy, index) => {
     const originalName = originalProxyNames[index];
     if (hasOwn(referenceNames, originalName)) {
@@ -154,7 +945,7 @@ function main(config) {
   const infoSet = new Set(infoNodes);
   const normalOriginalNames = originalProxyNames.filter(name => !infoSet.has(name));
 
-  // 3. 从官方组生成应用组：保留类型、首选出口、限制及新增组。
+  // 3. 从模板组生成应用组：保留类型、首选出口、限制及新增组。
   // AdBlock 会自然保留 REJECT；不再把所有应用套成同一份候选列表。
   const newProxyGroups = upstreamGroups.map(sourceGroup => {
     const group = { ...sourceGroup, name: renameReference(sourceGroup.name) };
@@ -167,7 +958,7 @@ function main(config) {
       const coversAllNodes = normalOriginalNames.length > 0 &&
         normalOriginalNames.every(name => memberSet.has(name));
 
-      // 有动态成员、过滤条件时保留官方组原样，不压缩其节点范围。
+      // 有动态成员、过滤条件时保留模板组原样，不压缩其节点范围。
       const hasDynamicMembers = Boolean(
         sourceGroup.use || sourceGroup.filter || sourceGroup["exclude-filter"] ||
         sourceGroup["exclude-type"] || sourceGroup["include-all"] ||
@@ -187,7 +978,7 @@ function main(config) {
         ]);
       } else if (canAddRegions && COMPACT_APP_GROUPS &&
                  !originalProxySet.has(members[0])) {
-        // 先保留所有官方组/内置出口及其顺序，再追加地区组。
+        // 先保留所有模板组/内置出口及其顺序，再追加地区组。
         group.proxies = unique([
           ...members.filter(name => !originalProxySet.has(name)).map(renameReference),
           ...countryGroupNames
@@ -206,7 +997,7 @@ function main(config) {
       // 默认代理曾首选自动组时，改名结果会指向自身；清除此默认值。
       if (group["default-selected"] === group.name) {
         delete group["default-selected"];
-      // 官方若明确指定其他节点，保留它，不能被列表压缩丢掉。
+      // 模板若明确指定其他节点，保留它，不能被列表压缩丢掉。
       } else if (Array.isArray(group.proxies) &&
           !group.proxies.includes(group["default-selected"])) {
         group.proxies.push(group["default-selected"]);
@@ -314,11 +1105,11 @@ function main(config) {
     }
     if (parts[0].trim().toUpperCase() === "RULE-SET" &&
         !hasOwn(config["rule-providers"] || {}, parts[1].trim())) {
-      throw new Error("缺少官方规则集：" + parts[1].trim() + "，请更新完整订阅。");
+      throw new Error("内部固定模板缺少规则集：" + parts[1].trim() + "。");
     }
   });
 
-  // 5. 沿用原脚本的个人网络配置（官方同步仅针对分流层）。
+  // 5. 沿用原脚本的个人网络配置（固定模板仅针对分流层）。
   config["port"] = 7890;
   config["socks-port"] = 7891;
   config["mixed-port"] = 7892;
@@ -447,50 +1238,4 @@ function oixNormalizeNodeName(name, region) {
   const hasFlag = /[\u{1F1E6}-\u{1F1FF}]{2}/u.test(cleaned);
   if (!hasFlag && flags[region]) cleaned = flags[region] + " " + cleaned;
   return cleaned.replace(/^([\u{1F1E6}-\u{1F1FF}]{2})\s*/u, "$1 ");
-}
-
-// FL-Rules 分流增量。DNS 保留订阅值，由 FlClash 的按项覆写管理。
-function applyFlRulesProfile(config) {
-  const base = "https://fastly.jsdelivr.net/gh/FoobarRogers/FL-Rules@main/Clash/Provider/";
-  const providers = config["rule-providers"] || (config["rule-providers"] = {});
-  const normalNames = config.proxies.filter(proxy => !oixIsInfoNode(proxy.name)).map(proxy => proxy.name);
-  const groups = config["proxy-groups"];
-  const legacyIndex = groups.findIndex(group => group.name === "miHoYo");
-  const newGroups = groups.filter(group => !["miHoYo", "mihoyo", "HoYoverse", "hoyoverse"].includes(group.name));
-  const at = legacyIndex < 0 ? newGroups.length : Math.min(legacyIndex, newGroups.length);
-  newGroups.splice(at, 0,
-    { name: "miHoYo", type: "select", proxies: ["DIRECT", "Proxy", ...normalNames] },
-    { name: "hoyoverse", type: "select", proxies: ["Proxy", "DIRECT", ...normalNames] }
-  );
-  config["proxy-groups"] = newGroups;
-
-  // 仅替换已知 dler GitHub/CDN 的 Provider 路径，不改第三方自定义来源。
-  Object.values(providers).forEach(provider => {
-    if (typeof provider.url !== "string") return;
-    const cdn = provider.url.match(/^https:\/\/(?:fastly|cdn)\.jsdelivr\.net\/gh\/dler-io\/Rules@main\/Clash\/Provider\/(.+?)(?:[?#].*)?$/);
-    const raw = provider.url.match(/^https:\/\/raw\.githubusercontent\.com\/dler-io\/Rules\/main\/Clash\/Provider\/(.+?)(?:[?#].*)?$/);
-    if (!cdn && !raw) return;
-    const relative = (cdn || raw)[1];
-    provider.url = base + relative;
-    // 独立缓存路径，避免首次切换时继续使用旧仓库的缓存内容。
-    provider.path = "./Rules/FL-Rules/" + relative;
-  });
-  for (const name of ["miHoYoCN", "HoYoverse"]) {
-    providers[name] = {
-      type: "http", behavior: "classical", format: "yaml",
-      url: base + name + ".yaml", path: "./Rules/FL-Rules/" + name + ".yaml", interval: 86400
-    };
-  }
-  const isHoYo = rule => /^RULE-SET\s*,\s*(?:miHoYo|miHoYoCN|HoYoverse)\s*,/i.test(rule);
-  const first = config.rules.findIndex(isHoYo);
-  const rules = config.rules.filter(rule => !isHoYo(rule));
-  let insertAt = first < 0
-    ? rules.findIndex(rule => /^RULE-SET\s*,\s*(?:PROXY|Domestic)\s*,|^GEOIP\s*,|^MATCH\s*,/i.test(rule))
-    : config.rules.slice(0, first).filter(rule => !isHoYo(rule)).length;
-  if (insertAt < 0) insertAt = rules.length;
-  rules.splice(insertAt, 0, "RULE-SET,HoYoverse,hoyoverse", "RULE-SET,miHoYoCN,miHoYo");
-  config.rules = rules;
-  // 原文件在 fork 中保留兼容。当前配置没有引用时才移除旧 Provider。
-  const allRules = rules.concat(...Object.values(config["sub-rules"] || {}));
-  if (!allRules.some(rule => /^RULE-SET\s*,\s*miHoYo\s*,/i.test(rule))) delete providers.miHoYo;
 }
