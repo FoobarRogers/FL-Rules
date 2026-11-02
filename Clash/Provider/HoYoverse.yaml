@@ -10,5 +10,28 @@ payload:
   - DOMAIN-SUFFIX,hoyoverse.com
   - DOMAIN-SUFFIX,n0vadesktop.com
   - DOMAIN-SUFFIX,zenlesszonezero.com
-  # Genshin Impact OSREL resource endpoint (HK hostname; international service)
+  # Genshin Impact OSREL resource endpoint
   - DOMAIN,autopatchhk.yuanshen.com
+  # Honkai Impact 3 international launcher endpoint
+  - DOMAIN,sdk-os-static.mihoyo.com
+  # Honkai Impact 3 international Akamai CDN hosts (exact observed hostnames)
+  # OS
+  - DOMAIN,bigfile-os-mihayo.akamaized.net
+  - DOMAIN,hk-bundle-os-mihayo.akamaized.net
+  - DOMAIN,bundle-os-mihayo.akamaized.net
+  - DOMAIN,hk-bigfile-os-mihayo.akamaized.net
+  # JP
+  - DOMAIN,hk-bundle-jp-mihayo.akamaized.net
+  - DOMAIN,bigfile-jp-mihayo.akamaized.net
+  - DOMAIN,hk-bigfile-jp-mihayo.akamaized.net
+  - DOMAIN,bundle-jp-mihayo.akamaized.net
+  # KR
+  - DOMAIN,bundle-kr-mihayo.akamaized.net
+  - DOMAIN,bigfile-kr-mihayo.akamaized.net
+  # Asia
+  - DOMAIN,bundle-asia-mihayo.akamaized.net
+  - DOMAIN,bigfile-asia-mihayo.akamaized.net
+  - DOMAIN,hk-bundle-asia-mihayo.akamaized.net
+  - DOMAIN,hk-bigfile-asia-mihayo.akamaized.net
+  # Shared/root host observed in the updater
+  - DOMAIN,mihayo.akamaized.net
