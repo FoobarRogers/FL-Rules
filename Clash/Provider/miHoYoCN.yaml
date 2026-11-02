@@ -18,4 +18,4 @@ payload:
   # Genshin Impact CNREL resource endpoint; do not wildcard yuanshen.com
   - DOMAIN,autopatchcn.yuanshen.com
   - DOMAIN-SUFFIX,juequling.com
-  - DOMAIN-REGEX,^.+-mihayo\\.akamaized\\.net$
+  - DOMAIN-REGEX,^.+-mihayo\.akamaized\.net$
