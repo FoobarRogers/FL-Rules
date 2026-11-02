@@ -10,3 +10,5 @@ payload:
   - DOMAIN-SUFFIX,hoyoverse.com
   - DOMAIN-SUFFIX,n0vadesktop.com
   - DOMAIN-SUFFIX,zenlesszonezero.com
+  # Genshin Impact OSREL resource endpoint (HK hostname; international service)
+  - DOMAIN,autopatchhk.yuanshen.com
