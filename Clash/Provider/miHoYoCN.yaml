@@ -18,4 +18,6 @@ payload:
   # Genshin Impact CNREL resource endpoint; do not wildcard yuanshen.com
   - DOMAIN,autopatchcn.yuanshen.com
   - DOMAIN-SUFFIX,juequling.com
+  # Fallback for unmatched mihayo Akamai hosts.
+  # Known international hosts are matched first by the HoYoverse provider.
   - DOMAIN-REGEX,^.+-mihayo\.akamaized\.net$
