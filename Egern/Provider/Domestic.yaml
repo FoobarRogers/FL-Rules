@@ -84,6 +84,7 @@ domain_suffix_set:
   # > Other domains
   - 10010.com
   - 12306.com
+  - 123pan.com
   - 126.net
   - 163.com
   - 360.com
@@ -130,17 +131,22 @@ domain_suffix_set:
   - chunboimg.com
   - clouddn.com
   - cloudsigma.com
-  - cloudxns.net
   - cmct.tv
   - cmfu.com
   - cnlang.org
   - coolapk.com
   - cz88.net
   - dct-cloud.com
+  - deepseek.com
   - didialift.com
   - digicert.com
+  - dingtalk.com
+  - dingtalk.net
+  - dingtalkapps.com
+  - dingtalkcloud.com
   - douban.com
   - doubanio.com
+  - doubao.com
   - douyu.com
   - douyu.tv
   - douyutv.com
@@ -150,6 +156,10 @@ domain_suffix_set:
   - easou.com
   - eudic.net
   - ewqcxz.com
+  - feishuapp.com
+  - feishucdn.com
+  - feishudoc.com
+  - feishuimg.com
   - feng.com
   - fir.im
   - frdic.com
@@ -181,12 +191,13 @@ domain_suffix_set:
   - ixdzs.com
   - jd.com
   - jd.hk
+  - jianguoyun.com
   - jianshu.com
   - jianshu.io
   - jianshuapi.com
-  - jiathis.com
   - jomodns.com
   - jsboxbbs.com
+  - kimi.com
   - knewone.com
   - kuaidi100.com
   - kugou.com
@@ -218,11 +229,15 @@ domain_suffix_set:
   - netease.com
   - nfoservers.com
   - ngabbs.com
+  - nlark.com
   - nuomi.com
   - ourbits.club
   - ourdvs.com
   - passthepopcorn.me
+  - pddcdn.com
+  - pddpic.com
   - pgyer.com
+  - pinduoduo.com
   - pniao.com
   - privatehd.to
   - qbox.me
@@ -243,14 +258,16 @@ domain_suffix_set:
   - qq.net
   - qqmail.com
   - qqurl.com
-  - rarbg.to
   - redacted.ch
   - rednotecdn.com
   - rnote.com
   - rrmj.tv
   - ruguoapp.com
+  - sdo.com
   - servicewechat.com
   - sf-express.com
+  - shimo.im
+  - shimonote.com
   - sinaapp.com
   - sinaimg.com
   - smzdm.com
@@ -262,9 +279,7 @@ domain_suffix_set:
   - soku.com
   - soso.com
   - sspai.com
-  - startssl.com
   - suning.com
-  - symcd.com
   - taobao.com
   - tawk.link
   - tawk.to
@@ -275,8 +290,6 @@ domain_suffix_set:
   - tmall.com
   - tmzvps.com
   - totheglory.im
-  - trello.com
-  - trellocdn.com
   - ttmeiju.com
   - tudou.com
   - udache.com
@@ -293,9 +306,11 @@ domain_suffix_set:
   - weiphone.com
   - weiphone.net
   - weixinbridge.com
+  - weiyun.com
   - werewolf.53site.com
   - wkcdn.com
-  - xdrig.com
+  - wps.com
+  - wpscdn.com
   - xhostfire.com
   - xhscdn.com
   - xiaohongshu.com
@@ -308,6 +323,7 @@ domain_suffix_set:
   - xmcdn.com
   - xslb.net
   - yach.me
+  - yangkeduo.com
   - yeepay.com
   - yhd.com
   - yinxiang.com
@@ -316,6 +332,7 @@ domain_suffix_set:
   - youdao.com
   - ysepay.com
   - yunjiasu-cdn.net
+  - yuque.com
   - zealer.com
   - zgslb.net
   - zhihu.com

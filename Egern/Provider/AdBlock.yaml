@@ -7170,6 +7170,9 @@ domain_set:
   - miniapp.bilibili.com
   - thirdparty.biliapi.com
 
+  # > China Unicom
+  - dm.wo.com.cn
+
   # > ele
   - log.star.ele.me
 
