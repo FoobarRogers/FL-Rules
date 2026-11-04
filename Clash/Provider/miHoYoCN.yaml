@@ -15,7 +15,8 @@ payload:
   - DOMAIN-SUFFIX,bh3.com
   - DOMAIN-SUFFIX,bhsr.com
   - DOMAIN-SUFFIX,themisweeps.com
-  # Genshin Impact CNREL resource endpoint; do not wildcard yuanshen.com
-  - DOMAIN,autopatchcn.yuanshen.com
+  # Shared roots: international exact exceptions MUST be matched first
+  - DOMAIN-SUFFIX,yuanshen.com
+  - DOMAIN-SUFFIX,starrails.com
   - DOMAIN-SUFFIX,juequling.com
   - DOMAIN-REGEX,^.+-mihayo\.akamaized\.net$

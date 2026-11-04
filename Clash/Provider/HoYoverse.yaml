@@ -1,7 +1,5 @@
 payload:
-  # HoYoverse international
-  # Source: MetaCubeX/meta-rules-dat @ 4d9cbf4cc642e29a5cb016a724083094d9a01d99
-  # geo/geosite/classical/hoyoverse.yaml
+  # Existing international roots
   - DOMAIN-SUFFIX,genshinimpact.com
   - DOMAIN-SUFFIX,honkaiimpact3.com
   - DOMAIN-SUFFIX,honkaistarrail.com
@@ -10,5 +8,47 @@ payload:
   - DOMAIN-SUFFIX,hoyoverse.com
   - DOMAIN-SUFFIX,n0vadesktop.com
   - DOMAIN-SUFFIX,zenlesszonezero.com
-  # Genshin Impact OSREL resource endpoint (HK hostname; international service)
+  # Genshin: four regions + shared OS endpoints
   - DOMAIN,autopatchhk.yuanshen.com
+  - DOMAIN,dispatchosglobal.yuanshen.com
+  - DOMAIN,osasiadispatch.yuanshen.com
+  - DOMAIN,oseurodispatch.yuanshen.com
+  - DOMAIN,osusadispatch.yuanshen.com
+  - DOMAIN,oschtdispatch.yuanshen.com
+  - DOMAIN,osuspider.yuanshen.com
+  - DOMAIN,overseauspider.yuanshen.com
+  # Star Rail: four regions + shared OS endpoints
+  - DOMAIN,autopatchos.starrails.com
+  - DOMAIN,globaldp-prod-os01.starrails.com
+  - DOMAIN,globaldp-prod-os02.starrails.com
+  - DOMAIN,prod-official-asia-dp01.starrails.com
+  - DOMAIN,prod-official-eur-dp01.starrails.com
+  - DOMAIN,prod-official-usa-dp01.starrails.com
+  - DOMAIN,prod-official-cht-dp01.starrails.com
+  # Legacy international SDK/API endpoints
+  - DOMAIN,hk4e-sdk-os.mihoyo.com
+  - DOMAIN,hk4e-api-os.mihoyo.com
+  - DOMAIN,hk4e-api-os-static.mihoyo.com
+  - DOMAIN,minor-api-os.mihoyo.com
+  - DOMAIN,log-upload-os.mihoyo.com
+  - DOMAIN,sdk-os-static.mihoyo.com
+  - DOMAIN,api-os-takumi.mihoyo.com
+  - DOMAIN,webstatic-sea.mihoyo.com
+  - DOMAIN,uploadstatic-sea.mihoyo.com
+  - DOMAIN,api-sea.mihoyo.com
+  - DOMAIN,api-sdk-os.mihoyo.com
+  # Honkai Impact 3 international CDN exceptions from prior session
+  - DOMAIN,hk-bundle-jp-mihayo.akamaized.net
+  - DOMAIN,bundle-kr-mihayo.akamaized.net
+  - DOMAIN,bundle-asia-mihayo.akamaized.net
+  - DOMAIN,bigfile-os-mihayo.akamaized.net
+  - DOMAIN,hk-bundle-os-mihayo.akamaized.net
+  - DOMAIN,bigfile-jp-mihayo.akamaized.net
+  - DOMAIN,bundle-os-mihayo.akamaized.net
+  - DOMAIN,hk-bigfile-os-mihayo.akamaized.net
+  - DOMAIN,bigfile-asia-mihayo.akamaized.net
+  - DOMAIN,hk-bigfile-jp-mihayo.akamaized.net
+  - DOMAIN,hk-bundle-asia-mihayo.akamaized.net
+  - DOMAIN,bundle-jp-mihayo.akamaized.net
+  # Windows game UDP: overseas GEOIP wins over CN overlap
+  - 'AND,((NETWORK,udp),(OR,((PROCESS-NAME,GenshinImpact.exe),(PROCESS-NAME,StarRail.exe),(PROCESS-NAME,ZenlessZoneZero.exe))),(OR,((GEOIP,JP),(GEOIP,HK),(GEOIP,US),(GEOIP,DE),(GEOIP,SG))))'
