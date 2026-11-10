@@ -7151,6 +7151,58 @@ domain_suffix_set:
   - xdrig.com
   - zhihu.xmcimg.com
 
+  # > PCDN
+  - abcdefgaijkl.com
+  - abcdegghijkl.com
+  - ahdohpiechei.com
+  - alphawebzzz.com
+  - clipspacexyy.com
+  - datapixelzzx.com
+  - dddfe.com
+  - demoforge.site
+  - dooquuequezi.com
+  - eeeam.com
+  - flexcloudyz.com
+  - gaetausohyei.com
+  - gliderboxxyy.com
+  - gncrr.live
+  - ijklmnopqrst.com
+  - kaiwaijaicai.com
+  - kodo.bilivideo.com
+  - lmnopqrstuvw.com
+  - mcdn.bilivideo.cn
+  - mcdn.bilivideo.com
+  - mountaintoys.cn
+  - netvisorhub.com
+  - nexusedgeio.com
+  - opqrsduvwxyz.com
+  - ourdvsss.com
+  - ppio.bilivideo.com
+  - qrstuvwxyzab.com
+  - quantazoomz.com
+  - roongeimahwo.com
+  - scwl.cn
+  - solseed.cn
+  - solseedr.cn
+  - stormfluxixx.com
+  - szbdyd.com
+  - taishoopecei.com
+  - techvortexz1.com
+  - thefirstchain.com
+  - wiebaijitamo.com
+  - xionguamaqui.com
+  - xyxyzz.com
+  - zeicaefiegoh.com
+  - zhenidc.cn
+  - zhenxcloud.cn
+  - zhenxuancdn.cn
+  - zhenxuancloud.com
+  - zhenxuanidc.cn
+  - zhenxyun.cn
+  - zonerushappz.com
+  - zxycdn.cn
+  - zyxwvutsrqpo.com
+
 domain_set:
   # > Baidu
   - duclick.baidu.com
@@ -7195,6 +7247,11 @@ domain_set:
   - sugar.zhihu.com
   - zhihu-analytics.zhihu.com
   - zhihu-web-analytics.zhihu.com
+
+  # > PCDN
+  - data.bilibili.com
+  - dataflow.biliapi.com
+  - cm.bilibili.com
 
 ip_cidr_set:
   # > China Mobile
