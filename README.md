@@ -5,8 +5,9 @@
 ## 使用入口
 
 - `Scripts/oix-script.js`、`Scripts/ssrdog-script.js`：两份可独立运行的固定分流脚本，执行代码完全相同，文件名仅用于区分订阅。
+- 当前脚本版本：**1.0.0（2026-11-18）**。版本号位于两份脚本头部；变更见 [Scripts/CHANGELOG.md](Scripts/CHANGELOG.md)。后续两份脚本同步升级版本号。
 - 两份脚本都只读取输入订阅的内联 `proxies` 和 `dns`；不读取订阅里的分组、规则或 Provider。分组、规则、规则集地址、默认出口全部由脚本内置模板维护。
-- 内置模板含 65 条路由、63 个 Provider。节点和 DNS 随当前订阅更新；远程 Provider 内容按 interval 更新。新增或调整分组、规则顺序、Provider 定义时需同步更新两份脚本，不会从 OIX 封端订阅自动继承。
+- 内置模板含 66 条路由、63 个 Provider。节点和 DNS 随当前订阅更新；远程 Provider 内容按 interval 更新。新增或调整分组、规则顺序、Provider 定义时需同步更新两份脚本，不会从 OIX 封端订阅自动继承。
 - `Clash/Rule_FL.yaml`：本 fork 的路由片段，不是完整订阅；使用前需要定义其中引用的策略组，包括 `mihoyo` 和 `hoyoverse`。
 - `Clash/Rule.yaml`、`Clash/Provider/miHoYo.yaml`：保留上游兼容入口；前者仍引用上游仓库，后者仍为旧的国内外混合列表。新脚本不使用这个混合 Provider。
 
@@ -37,7 +38,7 @@
 
 ## 规则和 DNS
 
-内置规则保留 OIX 基线原有的 `no-resolve` 状态，不额外添加或删除。OIX 原来的 LAN 规则可以为域名解析真实 IP，后面的 GEOIP CN 继续补漏。原有 Provider 中已写的 `no-resolve` 保留。
+内置规则保留 OIX 基线原有的 `no-resolve` 状态，不额外添加或删除。服务专用规则和现有 Provider 优先；尾部按 `GEOSITE,cn,直接连接` → `GEOIP,CN,直接连接` → `MATCH,Others` 匹配。GeoSite 补充使用境外 IP 的国内站点，GeoIP 继续补充国内目的 IP。GeoSite 的 `cn` 内容取决于客户端配置的 geosite.dat 数据源。
 
 DNS 继承各自输入订阅；客户端可以按项覆写。OIX 的节点专用 DNS 不复制到 SSRDOG。客户端保存的策略选择可能优先于列表顺序，应用脚本后检查实际出口。
 

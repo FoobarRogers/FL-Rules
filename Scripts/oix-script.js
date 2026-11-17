@@ -1,8 +1,9 @@
 /*
+ * 脚本版本：1.0.0（2026-11-18），更新记录见 Scripts/CHANGELOG.md。
  * oixCloud：只读取输入订阅的内联 proxies 和 dns，使用自维护的统一分流模板。
  * OIX 与 SSRDOG 两份脚本的执行代码完全相同；文件名仅用于区分使用位置。
  * 分组、规则、Provider、默认出口均在脚本内固定，不读取订阅中的分流设计。
- * 本模板含 65 条路由、63 个 FL-Rules Provider；分组结构改动需更新脚本。
+ * 本模板含 66 条路由、63 个 FL-Rules Provider；分组结构改动需更新脚本。
  * Provider 内容按 interval 更新；节点与 DNS 各自随当前订阅更新。
  * 大陆 mihoyo 默认直连，海外 hoyoverse 默认代理；不额外追加 no-resolve。
  * 无实际节点、账号、密码或订阅链接；每份 JS 均可独立运行。
@@ -779,6 +780,8 @@ function main(config) {
     "RULE-SET,Domestic,Domestic",
     "RULE-SET,Domestic IPs,Domestic",
     "RULE-SET,LAN,DIRECT",
+    // 服务专用规则优先；国内域名补漏后，再判断目的 IP 所属地区。
+    "GEOSITE,cn,Domestic",
     "GEOIP,CN,Domestic",
     "MATCH,Others"
   ]
